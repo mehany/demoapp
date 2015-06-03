@@ -2,7 +2,8 @@
 
 A simple piece of software written in PHP to track expenses for an EU organization.
 
-   Front-end app structure
+
+      Front-end app structure
       --Public
         --JS
           // Elixir compiled script gets dumped here
