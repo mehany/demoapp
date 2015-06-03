@@ -1,0 +1,28 @@
+{
+  "name": "Custom Expenses Tracking Application",
+  "version": "1.0.0",
+  "homepage": "https://mehany.io",
+  "moduleType": [
+    "node"
+  ],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    
+    "jquery": "2.1.4",
+    "jquery-ui": "1.11.2",
+    "bootstrap-sass": "~3.3.4",
+    "bootswatch": "~3.3.4",
+    "font-awesome": "~4.3.0",
+    "metisMenu": "2.0.0",
+    "datatables": "~1.10.5",
+    "datatables-bootstrap3-plugin": "~0.4.0",
+    "jquery-colorbox": "~1.6.0"
+  }
+}

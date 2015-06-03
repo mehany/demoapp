@@ -1,0 +1,172 @@
+ <?php /* Content */ ?> <?php $__env->startSection('content'); ?>
+<!-- Tabs -->
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab-general" data-toggle="tab"> <?php echo e(trans("admin/modal.general")); ?></a></li>
+</ul>
+<!-- ./ tabs -->
+<?php /* Edit Blog Form */ ?>
+<form class="form-horizontal" enctype="multipart/form-data"
+	method="post"
+	action="<?php if(isset($tender)): ?><?php echo e(URL::to('admin/tenders/'.$tender->id.'/edit')); ?>
+
+	        <?php else: ?><?php echo e(URL::to('admin/tenders/create')); ?><?php endif; ?>"
+	autocomplete="off">
+	<!-- CSRF Token -->
+	<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+	<!-- ./ csrf token -->
+	<!-- Tabs Content -->
+	<div class="tab-content">
+		<!-- General tab -->
+		<div class="tab-pane active" id="tab-general">
+			<div class="tab-pane active" id="tab-general">
+				
+				
+				
+				<div
+					class="form-group <?php echo e($errors->has('customer_id') ? 'error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="customer_id"><?php echo e(trans("admin/tenders.customer_id")); ?></label> 
+							<select
+							style="width: 100%" name="customer_id" id="customer_id"
+							class="form-control"> 
+							<?php foreach($customers as $item): ?>
+								<option value="<?php echo e($item->id); ?>"
+									<?php if(!empty($customer_id)): ?>
+                                        <?php if($item->id==$customer_id): ?>
+									selected="selected" <?php endif; ?> <?php endif; ?> ><?php echo e($item->company_name); ?>
+
+								</option>
+							<?php endforeach; ?>
+						</select>
+						<?php echo $errors->first('customer_id', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('reference_number') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="reference_number"> <?php echo e(trans("admin/tenders.reference_number")); ?></label> <input
+							class="form-control" type="text" name="reference_number" id="reference_number"
+							value="<?php echo e(Input::old('reference_number', isset($tender) ? $tender->reference_number : null)); ?>" />
+						<?php echo $errors->first('reference_number', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('validity') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="validity"> <?php echo e(trans("admin/tenders.validity")); ?></label> <input
+							class="form-control" type="text" name="validity" id="validity"
+							value="<?php echo e(Input::old('validity', isset($tender) ? $tender->validity : null)); ?>" />
+						<?php echo $errors->first('validity', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+			
+				<div
+					class="form-group <?php echo e($errors->has('date_of') ? 'error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="title"><?php echo e(trans("admin/tenders.date_of")); ?></label> <input
+							class="form-control" type="date" name="date_of" id="date_of"
+							value="<?php echo e(Input::old('date_of', isset($tender) ? $tender->date_of : null)); ?>" />
+						<?php echo $errors->first('date_of', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('payment') ? 'error' : ''); ?>">
+					<div class="col-md-12">
+					<label class="control-label" for="payment"><?php echo e(trans("admin/tenders.payment")); ?></label> 
+						<select style="width: 100%" name="payment" id="payment" class="form-control">
+						 		<option value=""></option> 
+								<option value="cash" <?php if(isset($tender->payment)): ?> <?php if($tender->payment==$tender->payment): ?> selected="selected" <?php endif; ?> <?php endif; ?>>Cash</option>
+								<option value="Check" <?php if(isset($tender->payment)): ?> <?php if($tender->payment==$tender->payment): ?> selected="selected" <?php endif; ?> <?php endif; ?>>Check</option>
+								<option value="LG" <?php if(isset($tender->payment)): ?> <?php if($tender->payment==$tender->payment): ?> selected="selected" <?php endif; ?> <?php endif; ?>>LG</option>
+						</select>
+					
+						<?php echo $errors->first('payment', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				
+				<div
+					class="form-group <?php echo e($errors->has('bid_bond') ? 'error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="bid_bond"><?php echo e(trans("admin/tenders.bid_bond")); ?></label> 
+							<select style="width: 100%" name="bid_bond" id="bid_bond" class="form-control">
+							    <option value=""></option> 
+								<option value="yes" <?php if(isset($tender->bid_bond)): ?> <?php if($tender->bid_bond=='yes'): ?> selected="selected" <?php endif; ?> <?php endif; ?>>Yes</option>
+								<option value="no" <?php if(isset($tender->bid_bond)): ?> <?php if($tender->bid_bond=='no'): ?> selected="selected" <?php endif; ?> <?php endif; ?>>No</option>
+						</select>
+						<?php echo $errors->first('bid_bond', '<label class="control-label">:message</label>'); ?>
+
+
+					</div>
+				</div>
+				
+				
+				
+				<div
+					class="form-group <?php echo e($errors->has('bond_payment_method') ? 'error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="bond_payment_method"><?php echo e(trans("admin/tenders.bond_payment_method")); ?></label> <input
+							class="form-control" type="text" name="bond_payment_method" id="bond_payment_method"
+							value="<?php echo e(Input::old('bond_payment_method', isset($tender) ? $tender->bond_payment_method : null)); ?>" />
+						<?php echo $errors->first('bond_payment_method', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				
+				<div
+					class="form-group <?php echo e($errors->has('bank_name_and_cover_method') ? 'error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="bank_name_and_cover_method"><?php echo e(trans("admin/tenders.bank_name_and_cover_method")); ?></label> <input
+							class="form-control" type="text" name="bank_name_and_cover_method" id="bank_name_and_cover_method"
+							value="<?php echo e(Input::old('bank_name_and_cover_method', isset($tender) ? $tender->bank_name_and_cover_method	 : null)); ?>" />
+						<?php echo $errors->first('bank_name_and_cover_method', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				
+				
+				<!-- ./ general tab -->
+			</div>
+			<!-- ./ tabs content -->
+
+			<!-- Form Actions -->
+
+			<div class="form-group">
+				<div class="col-md-12">
+					<button type="reset" class="btn btn-sm btn-warning close_popup">
+						<span class="glyphicon glyphicon-ban-circle"></span> <?php echo e(trans("admin/modal.cancel")); ?>
+
+					</button>
+					<button type="reset" class="btn btn-sm btn-default">
+						<span class="glyphicon glyphicon-remove-circle"></span> <?php echo e(trans("admin/modal.reset")); ?>
+
+					</button>
+					<button type="submit" class="btn btn-sm btn-success">
+						<span class="glyphicon glyphicon-ok-circle"></span> 
+						<?php if(isset($tender)): ?> 
+						  <?php echo e(trans("admin/modal.edit")); ?>
+
+						<?php else: ?> 
+						  <?php echo e(trans("admin/modal.create")); ?>
+
+						<?php endif; ?>
+					</button>
+				</div>
+			</div>
+			<!-- ./ form actions -->
+
+</form>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

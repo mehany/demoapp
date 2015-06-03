@@ -1,0 +1,101 @@
+ <?php /* Content */ ?> <?php $__env->startSection('content'); ?>
+<!-- Tabs -->
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab-general" data-toggle="tab"> <?php echo e(trans("admin/modal.general")); ?></a></li>
+</ul>
+<!-- ./ tabs -->
+<?php /* Edit Blog Form */ ?>
+<form class="form-horizontal" enctype="multipart/form-data"
+	method="post"
+	action="<?php if(isset($mission)): ?><?php echo e(URL::to('admin/missions/'.$mission->id.'/edit')); ?>
+
+	        <?php else: ?><?php echo e(URL::to('admin/missions/create')); ?><?php endif; ?>"
+	autocomplete="off">
+	<!-- CSRF Token -->
+	<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+	<!-- ./ csrf token -->
+	<!-- Tabs Content -->
+	<div class="tab-content">
+		<!-- General tab -->
+		<div class="tab-pane active" id="tab-general">
+			<div class="tab-pane active" id="tab-general">
+				
+				<div
+					class="form-group <?php echo e($errors->has('type') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="type"> <?php echo e(trans("admin/missions.type")); ?></label> <input
+							class="form-control" type="text" name="type" id="type"
+							value="<?php echo e(Input::old('type', isset($mission) ? $mission->type : null)); ?>" />
+						<?php echo $errors->first('type', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('head_of_mission') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="head_of_mission"> <?php echo e(trans("admin/missions.head_of_mission")); ?></label> <input
+							class="form-control" type="text" name="head_of_mission" id="head_of_mission"
+							value="<?php echo e(Input::old('head_of_mission', isset($mission) ? $mission->head_of_mission : null)); ?>" />
+						<?php echo $errors->first('head_of_mission', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('date_of') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="date_of"> <?php echo e(trans("admin/missions.date_of")); ?></label> <input
+							class="form-control" type="text" name="date_of" id="date_of"
+							value="<?php echo e(Input::old('date_of', isset($mission) ? $mission->date_of : null)); ?>" />
+						<?php echo $errors->first('date_of', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('memo') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="memo"><?php echo e(trans("admin/missions.memo")); ?></label>
+						<textarea class="form-control full-width wysihtml5" name="memo"
+							value="memo" rows="10"><?php echo e(Input::old('memo', isset($mission) ? $mission->memo : null)); ?></textarea>
+						<?php echo $errors->first('memo', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				
+				<!-- ./ general tab -->
+			</div>
+			<!-- ./ tabs content -->
+
+			<!-- Form Actions -->
+
+			<div class="form-group">
+				<div class="col-md-12">
+					<button type="reset" class="btn btn-sm btn-warning close_popup">
+						<span class="glyphicon glyphicon-ban-circle"></span> <?php echo e(trans("admin/modal.cancel")); ?>
+
+					</button>
+					<button type="reset" class="btn btn-sm btn-default">
+						<span class="glyphicon glyphicon-remove-circle"></span> <?php echo e(trans("admin/modal.reset")); ?>
+
+					</button>
+					<button type="submit" class="btn btn-sm btn-success">
+						<span class="glyphicon glyphicon-ok-circle"></span> 
+						<?php if(isset($mission)): ?> 
+						  <?php echo e(trans("admin/modal.edit")); ?>
+
+						<?php else: ?> 
+						  <?php echo e(trans("admin/modal.create")); ?>
+
+						<?php endif; ?>
+					</button>
+				</div>
+			</div>
+			<!-- ./ form actions -->
+
+</form>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

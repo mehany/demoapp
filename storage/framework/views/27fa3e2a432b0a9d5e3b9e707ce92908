@@ -1,0 +1,209 @@
+ <?php /* Content */ ?> <?php $__env->startSection('content'); ?>
+<!-- Tabs -->
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#tab-general" data-toggle="tab"> <?php echo e(trans("admin/modal.general")); ?></a></li>
+
+			<li>
+	<button type="button" class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>
+			</li>
+</ul>
+
+
+<!-- ./ tabs -->
+<?php /* Edit Customer information Form */ ?>
+<form class="form-horizontal" enctype="multipart/form-data"
+	method="post"
+	action="<?php if(isset($customer)): ?><?php echo e(URL::to('admin/customers/'.$customer->id.'/edit')); ?>
+
+	        <?php else: ?><?php echo e(URL::to('admin/customers/create')); ?><?php endif; ?>"
+	autocomplete="off">
+	<!-- CSRF Token -->
+	<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>" />
+	<!-- ./ csrf token -->
+	<!-- Tabs Content -->
+	<div class="tab-content">
+		<!-- General tab -->
+		<div class="tab-pane active" id="tab-general">
+			<div class="tab-pane active" id="tab-general">
+				
+				</div>
+				<div
+					class="form-group <?php echo e($errors->has('company_name') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="company_name"> <?php echo e(trans("admin/customers.company_name")); ?></label> <input
+							class="form-control" type="text" name="company_name" id="company_name"
+							value="<?php echo e(Input::old('company_name', isset($customer) ? $customer->company_name : null)); ?>" />
+						<?php echo $errors->first('title', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('title') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="sector"> <?php echo e(trans("admin/customers.sector")); ?></label> <input
+							class="form-control" type="text" name="sector" id="sector"
+							value="<?php echo e(Input::old('sector', isset($customer) ? $customer->sector : null)); ?>" />
+						<?php echo $errors->first('title', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('industry') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="industry"> <?php echo e(trans("admin/customers.industry")); ?></label> <input
+							class="form-control" type="text" name="industry" id="industry"
+							value="<?php echo e(Input::old('industry', isset($customer) ? $customer->industry : null)); ?>" />
+						<?php echo $errors->first('title', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				
+				<div
+					class="form-group <?php echo e($errors->has('street_address') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="street_address"> <?php echo e(trans("admin/customers.street_address")); ?></label> <input
+							class="form-control" type="text" name="street_address" id="street_address"
+							value="<?php echo e(Input::old('street_address', isset($customer) ? $customer->street_address : null)); ?>" />
+						<?php echo $errors->first('street_address', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('city') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="street_address"> <?php echo e(trans("admin/customers.city")); ?></label> <input
+							class="form-control" type="text" name="city" id="city"
+							value="<?php echo e(Input::old('city', isset($customer) ? $customer->city : null)); ?>" />
+						<?php echo $errors->first('street_address', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('state') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="state"> <?php echo e(trans("admin/customers.state")); ?></label> <input
+							class="form-control" type="text" name="state" id="state"
+							value="<?php echo e(Input::old('state', isset($customer) ? $customer->state : null)); ?>" />
+						<?php echo $errors->first('state', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('zipCode') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="zipCode"> <?php echo e(trans("admin/customers.zipCode")); ?></label> <input
+							class="form-control" type="text" name="zipCode" id="zipCode"
+							value="<?php echo e(Input::old('zipCode', isset($customer) ? $customer->zipCode : null)); ?>" />
+						<?php echo $errors->first('state', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('phone1') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="phone1"> <?php echo e(trans("admin/customers.phone1")); ?></label> <input
+							class="form-control" type="text" name="phone1" id="zipCode"
+							value="<?php echo e(Input::old('phone1', isset($customer) ? $customer->phone1 : null)); ?>" />
+						<?php echo $errors->first('state', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('phone2') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="phone2"> <?php echo e(trans("admin/customers.phone1")); ?></label> <input
+							class="form-control" type="text" name="phone2" id="phone2"
+							value="<?php echo e(Input::old('phone2', isset($customer) ? $customer->phone2 : null)); ?>" />
+						<?php echo $errors->first('phone2', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('phone3') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="phone3"> <?php echo e(trans("admin/customers.phone3")); ?></label> <input
+							class="form-control" type="text" name="phone3" id="phone3"
+							value="<?php echo e(Input::old('phone3', isset($customer) ? $customer->phone3 : null)); ?>" />
+						<?php echo $errors->first('phone3', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('fax') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="fax"> <?php echo e(trans("admin/customers.fax")); ?></label> <input
+							class="form-control" type="text" name="fax" id="fax"
+							value="<?php echo e(Input::old('fax', isset($customer) ? $customer->fax : null)); ?>" />
+						<?php echo $errors->first('phone3', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('fax2') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="fax2"> <?php echo e(trans("admin/customers.fax2")); ?></label> <input
+							class="form-control" type="text" name="fax2" id="fax2"
+							value="<?php echo e(Input::old('fax2', isset($customer) ? $customer->fax2 : null)); ?>" />
+						<?php echo $errors->first('phone3', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				<div
+					class="form-group <?php echo e($errors->has('memo') ? 'has-error' : ''); ?>">
+					<div class="col-md-12">
+						<label class="control-label" for="memo"> <?php echo e(trans("admin/customers.fax2")); ?></label> <input
+							class="form-control" type="text" name="memo" id="memo"
+							value="<?php echo e(Input::old('memo', isset($customer) ? $customer->memo : null)); ?>" />
+						<?php echo $errors->first('memo', '<label class="control-label">:message</label>'); ?>
+
+					</div>
+				</div>
+				
+				
+				
+				<!-- ./ general tab -->
+			</div>
+			<!-- ./ tabs content -->
+
+			<!-- Form Actions -->
+
+			<div class="form-group">
+				<div class="col-md-12">
+					<button type="reset" class="btn btn-sm btn-warning close_popup">
+						<span class="glyphicon glyphicon-ban-circle"></span> <?php echo e(trans("admin/modal.cancel")); ?>
+
+					</button>
+					<button type="reset" class="btn btn-sm btn-default">
+						<span class="glyphicon glyphicon-remove-circle"></span> <?php echo e(trans("admin/modal.reset")); ?>
+
+					</button>
+					<button type="submit" class="btn btn-sm btn-success">
+						<span class="glyphicon glyphicon-ok-circle"></span> 
+						<?php if(isset($customer)): ?> 
+						  <?php echo e(trans("admin/modal.edit")); ?>
+
+						<?php else: ?> 
+						  <?php echo e(trans("admin/modal.create")); ?>
+
+						<?php endif; ?>
+					</button>
+				</div>
+			</div>
+			<!-- ./ form actions -->
+
+</form>
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('admin.layouts.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
